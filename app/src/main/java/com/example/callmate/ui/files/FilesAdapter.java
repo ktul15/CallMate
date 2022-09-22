@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.callmate.data.entities.FileModel;
 import com.example.callmate.databinding.FileViewHolderBinding;
+import com.example.callmate.ui.contacts.ContactsListActivity;
 import java.util.List;
 
 public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.FileViewHolder> {
@@ -35,6 +36,15 @@ public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.FileViewHold
     public void onBindViewHolder(@NonNull FileViewHolder holder, int position) {
         FileModel currentFile = allFiles.get(position);
         holder.binding.tvFileName.setText(String.valueOf(currentFile.getId()));
+
+        holder.binding.openFile.setOnClickListener(v -> {
+            Log.i("id from adapter", String.valueOf(currentFile.getId()));
+            //open new activity to show contacts from selected file
+            Intent intent = new Intent(context, ContactsListActivity.class);
+            intent.putExtra("fileId", currentFile.getId());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
     }
 
     @Override
