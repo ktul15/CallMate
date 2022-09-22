@@ -47,6 +47,10 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
             viewModel.setCurrentContact(currentContact);
 
             String mainNumber = allContacts.get(position).getMainPhoneNumber();
+            Intent intent = new Intent(Intent.ACTION_CALL);
+            intent.setData(Uri.parse("tel:"+mainNumber));
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
         });
     }
 
