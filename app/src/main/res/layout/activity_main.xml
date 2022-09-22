@@ -17,4 +17,9 @@
         android:contentDescription="Add new File"
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rvFiles"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

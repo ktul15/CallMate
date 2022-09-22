@@ -1,19 +1,18 @@
 package com.example.callmate;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.callmate.data.ContactsDatabase;
 import com.example.callmate.data.entities.ContactsModel;
@@ -22,6 +21,7 @@ import com.example.callmate.data.repositories.FileRepository;
 import com.example.callmate.databinding.ActivityMainBinding;
 import com.example.callmate.ui.contacts.ContactsViewModel;
 import com.example.callmate.ui.files.FileViewModel;
+import com.example.callmate.ui.files.FilesAdapter;
 import com.example.callmate.utils.Contact;
 import com.example.callmate.utils.DataProcessor;
 
@@ -35,10 +35,12 @@ public class MainActivity extends AppCompatActivity {
     FileRepository fileRepository;
     FileViewModel fileViewModel;
 
+    FilesAdapter filesAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        com.example.callmate.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        com.example.callmate.databinding.ActivityMainBinding binding = com.example.callmate.databinding.ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
@@ -60,13 +62,12 @@ public class MainActivity extends AppCompatActivity {
             List<FileModel> listOfFiles;
             if (fileModels.size() > 0) {
                 listOfFiles = fileModels;
-                Log.i("listOfFiles", listOfFiles.toString());
             } else {
                 listOfFiles = new ArrayList<>();
             }
-//            filesAdapter = new FilesAdapter(getApplicationContext(), fileViewModel, listOfFiles);
-//            binding.rvFiles.setAdapter(filesAdapter);
-//            binding.rvFiles.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+            filesAdapter = new FilesAdapter(getApplicationContext(), fileViewModel, listOfFiles);
+            binding.rvFiles.setAdapter(filesAdapter);
+            binding.rvFiles.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         });
     }
 
