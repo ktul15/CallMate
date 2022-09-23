@@ -14,6 +14,8 @@
         android:id="@+id/tv_fileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Hello"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,8 +23,11 @@
         android:id="@+id/tv_fileAddDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/tv_fileName"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Hello"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_fileName" />
 
     <Button
         android:id="@+id/openFile"
