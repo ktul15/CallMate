@@ -35,7 +35,7 @@ public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.FileViewHold
     @Override
     public void onBindViewHolder(@NonNull FileViewHolder holder, int position) {
         FileModel currentFile = allFiles.get(position);
-        holder.binding.tvFileName.setText(String.valueOf(currentFile.getId()));
+        holder.binding.tvFileName.setText(String.valueOf(currentFile.getFileName()));
 
         holder.binding.openFile.setOnClickListener(v -> {
             Log.i("id from adapter", String.valueOf(currentFile.getId()));
