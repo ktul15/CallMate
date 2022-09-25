@@ -12,13 +12,13 @@ import androidx.appcompat.app.AlertDialog;
 import com.example.callmate.R;
 import com.example.callmate.data.entities.ContactsModel;
 
-public class RemarksDialog {
+public class RemarksDialogBuilder {
     private ContactsListActivity contactsListActivity;
     private ContactsViewModel contactsViewModel;
     private View dialogView;
     private RadioGroup radioGroup;
 
-    public RemarksDialog(ContactsListActivity contactsListActivity, ContactsViewModel contactsViewModel, View dialogView, RadioGroup radioGroup) {
+    public RemarksDialogBuilder(ContactsListActivity contactsListActivity, ContactsViewModel contactsViewModel, View dialogView, RadioGroup radioGroup) {
         this.contactsListActivity = contactsListActivity;
         this.contactsViewModel = contactsViewModel;
         this.dialogView = dialogView;
