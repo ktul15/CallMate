@@ -8,7 +8,7 @@
     android:layout_margin="16dp"
     android:background="@drawable/my_border"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/tv_contact_sub_id"
@@ -31,17 +31,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_contact_name" />
 
-    <ImageView
+
+    <Button
+        android:id="@+id/btnChangeRemarks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Remarks"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/callAlternateBtn" />
+
+    <Button
         android:id="@+id/callBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_call"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:drawableLeft="@drawable/ic_call"
+        android:text="Main"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/callAlternateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_call"
+        android:text="Alternate"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/callBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
