@@ -7,10 +7,12 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.callmate.R;
 import com.example.callmate.data.entities.ContactsModel;
 import com.example.callmate.databinding.ContactViewHolderBinding;
 
@@ -19,11 +21,13 @@ import java.util.List;
 public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ContactViewHolder> {
 
     List<ContactsModel> allContacts;
+    ContactsListActivity contactsListActivity;
     Context context;
     ContactsViewModel viewModel;
 
-    public ContactsAdapter(Context context, ContactsViewModel viewModel, List<ContactsModel> allContacts){
+    public ContactsAdapter(Context context, ContactsListActivity contactsListActivity, ContactsViewModel viewModel, List<ContactsModel> allContacts){
         this.context = context;
+        this.contactsListActivity = contactsListActivity;
         this.viewModel = viewModel;
         this.allContacts = allContacts;
     }
@@ -45,12 +49,20 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
 
         holder.binding.callBtn.setOnClickListener(v -> {
             viewModel.setCurrentContact(currentContact);
-
             String mainNumber = allContacts.get(position).getMainPhoneNumber();
             Intent intent = new Intent(Intent.ACTION_CALL);
             intent.setData(Uri.parse("tel:"+mainNumber));
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
+        });
+
+        holder.binding.btnChangeRemarks.setOnClickListener(v -> {
+            viewModel.setCurrentContact(currentContact);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View dialogView = inflater.inflate(R.layout.dialog_calling_remarks, null);
+            RadioGroup radioGroup = dialogView.findViewById(R.id.radioGroup);
+            RemarksDialogBuilder dialogBuilder = new RemarksDialogBuilder(contactsListActivity, viewModel, dialogView, radioGroup);
+            dialogBuilder.createDialog().show();
         });
     }
 
