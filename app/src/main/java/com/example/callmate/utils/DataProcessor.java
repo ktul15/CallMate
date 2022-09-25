@@ -3,6 +3,7 @@ package com.example.callmate.utils;
 import android.content.Context;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.FileDescriptor;
@@ -81,9 +82,6 @@ public class DataProcessor {
                 case Constants.ALTERNATE_PHONE_4:
                     rowNumbers.put(Constants.ALTERNATE_PHONE_4, headerRowData.indexOf(dataItem));
                     break;
-                case Constants.REMARKS:
-                    rowNumbers.put(Constants.REMARKS, headerRowData.indexOf(dataItem));
-                    break;
             }
         }
 
@@ -91,7 +89,7 @@ public class DataProcessor {
         for(int i = 1; i < rows.size(); i++){
             Integer columnNumber = 0;
             ArrayList<String> rowData = new ArrayList<>(List.of(rows.get(i).split(",")));
-
+            Log.e("rowData", rowData.toString());
             Contact contact = new Contact();
             contact.setSubscriberId(Integer.parseInt(rowData.get(rowNumbers.get(Constants.SUBSCRIBER_ID))));
             contact.setDate_created(rowData.get(rowNumbers.get(Constants.DATE_CREATED)));
@@ -105,8 +103,6 @@ public class DataProcessor {
             alternatePhoneNumbers.add(rowData.get(rowNumbers.get(Constants.ALTERNATE_PHONE_4)));
 
             contact.setAlternate_phone_numbers(alternatePhoneNumbers);
-            contact.setRemarks(rowData.get(rowNumbers.get(Constants.REMARKS)));
-
             contactList.addNewContact(contact);
         }
 

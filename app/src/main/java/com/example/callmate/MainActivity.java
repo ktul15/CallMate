@@ -103,10 +103,9 @@ public class MainActivity extends AppCompatActivity {
                 String name = contact.getName();
                 String mainPhoneNumber = contact.getMainPhoneNumber();
                 ArrayList<String> alternatePhoneNumbers = contact.getAlternate_phone_numbers();
-                String callingRemark = contact.getRemarks();
                 int fileId = fileViewModel.getLastAddedFile().getId();
 
-                ContactsModel contactsModel = new ContactsModel(subscriberId, dateCreated, name, mainPhoneNumber, alternatePhoneNumbers, callingRemark, fileId);
+                ContactsModel contactsModel = new ContactsModel(subscriberId, dateCreated, name, mainPhoneNumber, alternatePhoneNumbers, fileId);
                 contactsViewModel.insert(contactsModel);
             }
         } catch (IOException e) {
@@ -158,10 +157,9 @@ public class MainActivity extends AppCompatActivity {
                                 String name = contact.getName();
                                 String mainPhoneNumber = contact.getMainPhoneNumber();
                                 ArrayList<String> alternatePhoneNumbers = contact.getAlternate_phone_numbers();
-                                String callingRemark = contact.getRemarks();
                                 int fileId = fileViewModel.getLastAddedFile().getId();
 
-                                ContactsModel contactsModel = new ContactsModel(subscriberId, dateCreated, name, mainPhoneNumber, alternatePhoneNumbers, callingRemark, fileId);
+                                ContactsModel contactsModel = new ContactsModel(subscriberId, dateCreated, name, mainPhoneNumber, alternatePhoneNumbers, fileId);
                                 contactsViewModel.insert(contactsModel);
                             }
                         } catch (IOException e) {

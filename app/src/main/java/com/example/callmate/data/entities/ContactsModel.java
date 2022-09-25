@@ -17,13 +17,12 @@ public class ContactsModel {
     String callingRemark;
     int fileId;
 
-    public ContactsModel(int subscriberId, String dateCreated, String name, String mainPhoneNumber, ArrayList<String> alternatePhoneNumbers, String callingRemark, int fileId) {
+    public ContactsModel(int subscriberId, String dateCreated, String name, String mainPhoneNumber, ArrayList<String> alternatePhoneNumbers, int fileId) {
         this.subscriberId = subscriberId;
         this.dateCreated = dateCreated;
         this.name = name;
         this.mainPhoneNumber = mainPhoneNumber;
         this.alternatePhoneNumbers = alternatePhoneNumbers;
-        this.callingRemark = callingRemark;
         this.fileId = fileId;
     }
 
