@@ -122,9 +122,9 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        assert inputStream != null;
         File file = createFileFromInputStream(inputStream);
-        Uri uri = Uri.fromFile(file);
-        return uri;
+        return Uri.fromFile(file);
     }
 
     ActivityResultLauncher<Intent> activityResultLauncher =
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
         try{
             File f = new File(getApplicationContext().getFilesDir(), "dummy_callmate.csv");
             OutputStream outputStream = new FileOutputStream(f);
-            byte buffer[] = new byte[1024];
+            byte[] buffer = new byte[1024];
             int length = 0;
 
             while((length=inputStream.read(buffer)) > 0) {
